@@ -13,23 +13,17 @@
 
 </div>
 
-## 🎯 About This Repository
+## 🧭 DiscoveryRSI at a glance
 
-This repository contains the public **DiscoveryRSI** research harness: a model-agnostic system for recursively developing, evaluating, revising, and attributing scientific hypotheses.
+**1. A new paradigm for scientific discovery.** We introduce **DiscoveryRSI**, a hypothesis-centered framework that turns research into a recursive learning process. Each proposal is a versioned research object combining an evidence-grounded claim, an investigation plan, explicit decision criteria, and alternative explanations. Multi-agent evolutionary search develops a research graph, selected computational investigations are compiled into executable Harbor tasks, and the evidence, decisions, and artifacts behind each revision are preserved as reusable experience.
 
-DiscoveryRSI turns a research question and available evidence into an explicit hypothesis, investigation plan, alternatives, decision criteria, and falsification conditions. The system preserves the full research path so every revision can be inspected, replayed, and improved.
+**2. A 27B model trained from research experience.** We introduce **DiscoveryRSI-27B**, trained with Hypothesis Credit Optimization: assessments of scientific quality are linked to documented contributions such as finding evidence, adding a comparator, clarifying a measurement, or repairing a falsification rule. In matched runs, DiscoveryRSI-27B selected **16.7% more unique hypotheses** and successfully compiled **50% more Harbor tasks** than its base model.
 
-## 🌟 Introduction
+**3. DFM-Bench, a benchmark for cumulative research progress.** We introduce **DFM-Bench** to evaluate more than a single attractive final answer. It scores individual hypotheses, revisions against their actual predecessors, ordered development paths, complete research runs, and deduplicated scientific contributions. This separates a good proposal from a productive research process, and an executable package from a scientifically validated result.
 
-DiscoveryRSI treats a hypothesis as a versioned research object rather than a finished answer. Its core loop is:
+![DiscoveryRSI system overview](docs/media/discoveryrsi-method.png)
 
-- 🔎 **Explore**: identify valuable questions and candidate explanations
-- 🧪 **Evaluate**: propose tests, comparators, evidence, and decision criteria
-- 🛠️ **Revise**: repair weak designs and incorporate criticism
-- 🧬 **Attribute**: connect progress to the behavior that produced it
-- 🔁 **Learn**: carry validated improvements into future research paths
-
-A multi-agent research tree can develop, repair, combine, or restart directions as evidence changes. The result is a traceable path from **question → hypothesis → evidence → experiment → revision**.
+*Figure 1. DiscoveryRSI couples multi-agent hypothesis development, contribution attribution, recursive model and workflow improvement, and process-level evaluation.*
 
 ## 📦 Resources
 
