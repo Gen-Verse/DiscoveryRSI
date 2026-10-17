@@ -1,80 +1,85 @@
-<h1 align="center">DiscoveryRSI</h1>
+<div align="center">
 
-<p align="center">
-  <strong>Recursive self-improvement for scientific discovery</strong>
+<h1>DiscoveryRSI</h1>
+
+<p><strong>Recursively learning to discover valuable hypotheses</strong></p>
+
+<p>
+  <a href="https://github.com/Gen-Verse/DiscoveryRSI"><img src="https://img.shields.io/badge/DiscoveryRSI-GitHub-black?logo=github&logoColor=white" alt="DiscoveryRSI GitHub"/></a>
+  <a href="https://huggingface.co/Gen-Verse/DiscoveryRSI-27B"><img src="https://img.shields.io/badge/DiscoveryRSI--27B-Hugging%20Face-FFCC00?logo=huggingface&logoColor=black" alt="DiscoveryRSI-27B on Hugging Face"/></a>
+  <a href="https://huggingface.co/collections/Gen-Verse/discoveryrsi"><img src="https://img.shields.io/badge/DiscoveryRSI-Collection-FFD21E?logo=huggingface&logoColor=black" alt="DiscoveryRSI collection"/></a>
+  <a href="https://foundry-arena.rsi-arena.workers.dev/arena"><img src="https://img.shields.io/badge/Live%20Arena-Watch%20DiscoveryRSI-4C1D95" alt="DiscoveryRSI live arena"/></a>
 </p>
 
-<p align="center">
-  DiscoveryRSI turns research questions, evidence, critique, and revision into a learning loop that compounds across investigations.
-</p>
+</div>
 
-<p align="center">
-  <a href="https://github.com/Gen-Verse/DiscoveryRSI"><img src="https://img.shields.io/badge/GitHub-DiscoveryRSI-181717?style=for-the-badge&logo=github&logoColor=white" alt="DiscoveryRSI on GitHub"></a>
-  <a href="https://huggingface.co/Gen-Verse/DiscoveryRSI-27B"><img src="https://img.shields.io/badge/Model-DiscoveryRSI--27B-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" alt="DiscoveryRSI-27B on Hugging Face"></a>
-  <a href="https://foundry-arena.rsi-arena.workers.dev/arena"><img src="https://img.shields.io/badge/Live%20Arena-Watch%20DiscoveryRSI-4C1D95?style=for-the-badge&logo=livechat&logoColor=white" alt="DiscoveryRSI live arena"></a>
-  <a href="https://phai-labs.com/"><img src="https://img.shields.io/badge/PhAI%20Labs-Research-2563EB?style=for-the-badge" alt="PhAI Labs"></a>
-</p>
+## 🎯 About This Repository
 
-<p align="center">
-  <a href="#paradigm">Paradigm</a> ·
-  <a href="#model">Model</a> ·
-  <a href="#bench">Bench</a> ·
-  <a href="#watch-the-live-arena">Watch live</a> ·
-  <a href="#run">Run</a> ·
-  <a href="#citation">Citation</a>
-</p>
+This repository contains the public **DiscoveryRSI** research harness: a model-agnostic system for recursively developing, evaluating, revising, and attributing scientific hypotheses.
 
-## Paradigm
+DiscoveryRSI turns a research question and available evidence into an explicit hypothesis, investigation plan, alternatives, decision criteria, and falsification conditions. The system preserves the full research path so every revision can be inspected, replayed, and improved.
 
-A scientific agent should do more than generate plausible text. It should decide what is worth investigating, turn a question into a falsifiable plan, identify the evidence that could change the conclusion, and improve the next attempt when a design fails.
+## 🌟 Introduction
 
-**DiscoveryRSI** makes that process the training signal. Each hypothesis is a versioned research object with a claim, test, evidence, alternatives, decision criteria, and lineage. Agents can develop, repair, combine, or restart directions while preserving the decisions that produced each revision.
+DiscoveryRSI treats a hypothesis as a versioned research object rather than a finished answer. Its core loop is:
 
-The loop is:
+- 🔎 **Explore**: identify valuable questions and candidate explanations
+- 🧪 **Evaluate**: propose tests, comparators, evidence, and decision criteria
+- 🛠️ **Revise**: repair weak designs and incorporate criticism
+- 🧬 **Attribute**: connect progress to the behavior that produced it
+- 🔁 **Learn**: carry validated improvements into future research paths
 
-**Question → Hypothesis → Evidence → Experiment → Revision → Learning**
+A multi-agent research tree can develop, repair, combine, or restart directions as evidence changes. The result is a traceable path from **question → hypothesis → evidence → experiment → revision**.
 
-Hypothesis Credit Optimization attributes progress to concrete research behavior: finding decisive evidence, adding a necessary comparator, clarifying a measurement, or repairing a falsification rule. Harness Replay tests workflow improvements under failure modes such as repeated rediscovery, tool failure, and lost context. Rediscovery carries evaluated improvements into the next research task.
+## 📦 Resources
 
-![DiscoveryRSI method](docs/media/discoveryrsi-method.png)
+| **Type** | **Name** | **Link** |
+| --- | --- | --- |
+| 🤖 Model | **DiscoveryRSI-27B** | [🤗 Hugging Face](https://huggingface.co/Gen-Verse/DiscoveryRSI-27B) |
+| 🧰 Code | **DiscoveryRSI harness** | [GitHub](https://github.com/Gen-Verse/DiscoveryRSI) |
+| 📚 Collection | **DiscoveryRSI models** | [🤗 Hugging Face](https://huggingface.co/collections/Gen-Verse/discoveryrsi) |
+| 📺 Demo | **DiscoveryRSI live arena** | [Open arena](https://foundry-arena.rsi-arena.workers.dev/arena) |
+| 🧪 Benchmark | **DFM-Bench workflow evaluation** | [Explore the harness](https://github.com/Gen-Verse/DiscoveryRSI#evidence) |
 
-*Hypothesis trees, contribution attribution, and recursive improvement.*
+## 🧠 What DiscoveryRSI does
 
-## Model
+The public harness includes the portable agentic core, provider adapters, role prompts, tool registry, replay store, campaign manifest, and domain adapters.
 
-The released model is [`Gen-Verse/DiscoveryRSI-27B`](https://huggingface.co/Gen-Verse/DiscoveryRSI-27B). It is trained to improve research hypotheses and research decisions across rounds, while the public repository provides the agentic harness around it.
+It supports research workflows that:
 
-The harness is model-agnostic. You can run DiscoveryRSI-27B behind an OpenAI-compatible endpoint, or use Codex, Claude Code, or another implementation of the `ModelAdapter` protocol.
+- generate falsifiable, data-aware study plans;
+- add controls, measurements, alternatives, and evidence boundaries;
+- preserve parent links and revision lineage;
+- identify whether an idea was evolved, repaired, crossed over, or restarted;
+- replay tool failures, repeated rediscovery, and lost context; and
+- evaluate complete research paths instead of isolated text generations.
 
-```bash
-export MODEL_ID=Gen-Verse/DiscoveryRSI-27B
-vllm serve "$MODEL_ID" --served-model-name discoveryrsi-27b
-```
+The system was developed across clinical and population health, therapeutic-target prioritization, disease mechanisms, and population multi-omics. GEO pathway and therapeutic-target adapters are included for user-provided records.
 
-## Bench
+## 📺 Watch the live research loop
 
-**DFM-Bench** evaluates the research process, not only the final paragraph. It scores hypothesis revisions, complete research paths, evidence use, scientific judgment, and the final contribution of an investigation.
+PhAI Labs is running a technical livestream that shows a scientific agent move from an open question to a testable research plan, then learn from evidence, critique, and revision.
 
-The experiments cover clinical and population health, therapeutic-target prioritization, disease mechanisms, and population multi-omics, with additional battery research tracks. In the reported comparison:
+<a href="https://foundry-arena.rsi-arena.workers.dev/arena"><img src="docs/media/discoveryrsi-live-demo-poster.png" alt="DiscoveryRSI live arena demo" width="100%"></a>
 
-- DiscoveryRSI reached **6.3% reference-actionability**, about **2.5× GPT** and **2.7× Claude**.
-- Two self-improvement rounds raised average hypothesis quality from **4.86 → 5.18 → 5.39**.
-- Expert reviewers rated **41%** of DiscoveryRSI-27B revisions as improvements, **47%** as unchanged, and **12%** as regressions.
-- In the battery track, **58.47%** of research evolutions were judged substantive progress.
+<video controls width="100%" poster="docs/media/discoveryrsi-live-demo-poster.png">
+  <source src="docs/media/discoveryrsi-live-demo.mp4" type="video/mp4">
+  Your browser can [download the one-minute demo](docs/media/discoveryrsi-live-demo.mp4).
+</video>
 
-Reference-actionability measures whether a generated hypothesis can be linked to a concrete direction in later expert-published research. It is an inspiration signal, not proof that an AI hypothesis was adopted or validated.
+[**Enter the live research room →**](https://foundry-arena.rsi-arena.workers.dev/arena)
 
-## Watch the live arena
+The arena makes the process inspectable: model comparisons, research domains, candidate hypotheses, compiled experiments, and the growing hypothesis tree update as the run progresses.
 
-> **The research loop is live.** Watch hypotheses evolve, evidence accumulate, experiments get compiled, and research trees grow across models and domains.
->
-> [**Enter the DiscoveryRSI live arena →**](https://foundry-arena.rsi-arena.workers.dev/arena)
+## 📊 Evidence
 
-<a href="https://foundry-arena.rsi-arena.workers.dev/arena"><img src="docs/media/discoveryrsi-live-arena.png" alt="DiscoveryRSI live arena showing model rankings and the research progress tree" width="100%"></a>
+In the reported literature comparison, DiscoveryRSI reached a **6.3% reference-actionability rate**, approximately **2.5× the GPT group** and **2.7× Claude**. This retrospective measure asks whether a generated hypothesis can be connected to a concrete research direction in later expert-published work, such as an experimental comparison, a measurement strategy, or a testable evidence gap.
 
-## Run
+Across two self-improvement rounds, average hypothesis quality rose from **4.86 to 5.39**. In expert review, **41% of DiscoveryRSI-27B revisions improved** and only **12% regressed**. These results are research-process signals and do not replace independent scientific validation.
 
-Install the public harness:
+## 🚀 Quick Start
+
+Clone the repository and install the public harness:
 
 ```bash
 git clone https://github.com/Gen-Verse/DiscoveryRSI.git
@@ -84,40 +89,71 @@ source .venv/bin/activate
 python -m pip install -e .
 ```
 
-Run the deterministic local demo:
+Run the deterministic local demo and tests:
 
 ```bash
 discovery-rsi demo --iterations 2
 pytest
 ```
 
-Run a campaign with DiscoveryRSI-27B served locally:
+## 🤖 Connect DiscoveryRSI-27B
+
+The released checkpoint is [`Gen-Verse/DiscoveryRSI-27B`](https://huggingface.co/Gen-Verse/DiscoveryRSI-27B). Serve it behind an OpenAI-compatible endpoint, then point the harness at that endpoint:
+
+```bash
+export MODEL_ID=Gen-Verse/DiscoveryRSI-27B
+vllm serve "$MODEL_ID" --served-model-name discoveryrsi-27b
+```
+
+In a second terminal:
 
 ```bash
 export DISCOVERY_RSI_BASE_URL=http://localhost:8000/v1
 export DISCOVERY_RSI_MODEL=discoveryrsi-27b
 export DISCOVERY_RSI_API_KEY=local
 
-discovery-rsi campaign \\
-  --adapter openai-compatible \\
-  --manifest configs/research_manifest.json \\
-  --roles plugins/discovery-rsi/roles \\
-  --iterations 3 \\
+discovery-rsi campaign \
+  --adapter openai-compatible \
+  --manifest configs/research_manifest.json \
+  --roles plugins/discovery-rsi/roles \
+  --iterations 3 \
   --replay episodes.jsonl
 ```
 
-The repository contains the portable agentic core, harness, provider adapters, role prompts, tool registry, replay store, and domain adapters. Datasets, credentials, private campaign traces, and restricted laboratory infrastructure are not bundled.
+The harness can also run with Codex, Claude Code, another OpenAI-compatible endpoint, or any implementation of the `ModelAdapter` protocol.
 
-## Citation
+## 🧪 Research Domains
 
-If you use DiscoveryRSI, please cite the technical report and the released model card:
+The public package includes workflows and adapters for:
 
-- [GitHub repository](https://github.com/Gen-Verse/DiscoveryRSI)
-- [DiscoveryRSI-27B on Hugging Face](https://huggingface.co/Gen-Verse/DiscoveryRSI-27B)
-- [DFM-Bench and technical report](https://github.com/Gen-Verse/DiscoveryRSI#citation)
+- clinical and population health;
+- therapeutic-target prioritization;
+- disease mechanisms;
+- population multi-omics; and
+- GEO-derived pathway and target records.
+
+Bring only data you are authorized to use. No patient rows, HCC material, UK Biobank material, private campaign traces, credentials, or laboratory infrastructure are bundled.
+
+## ⚠️ Limitations and Responsible Use
+
+DiscoveryRSI can produce plausible but unsupported claims, omit relevant evidence, misread sources, or propose infeasible experiments. Generated hypotheses require expert review, source checking, and independent verification. The system is not a medical device and must not be used to make clinical or other high-stakes decisions without qualified oversight.
+
+## 📝 Citation
+
+If you use DiscoveryRSI or DiscoveryRSI-27B, cite the technical report and link the released model:
+
+```bibtex
+@software{discoveryrsi,
+  title = {DiscoveryRSI},
+  url = {https://github.com/Gen-Verse/DiscoveryRSI},
+  note = {Recursive scientific hypothesis discovery and DiscoveryRSI-27B}
+}
+```
+
+- [Technical report and maintained citation links](https://github.com/Gen-Verse/DiscoveryRSI#citation)
+- [DiscoveryRSI-27B model card](https://huggingface.co/Gen-Verse/DiscoveryRSI-27B)
 - [PhAI Labs](https://phai-labs.com/)
-- [DiscoveryRSI live arena](https://foundry-arena.rsi-arena.workers.dev/arena)
 
-## License
+## 📄 License
 
-Project-owned code is licensed under Apache-2.0. See [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Project-owned code is licensed under Apache-2.0. See [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The model license, base-model terms, and dataset attribution requirements are specified separately in the model card.
