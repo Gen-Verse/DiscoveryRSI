@@ -47,25 +47,30 @@ A hypothesis is not treated as a finished answer. It is a versioned research obj
 
 ## Watch DiscoveryRSI live
 
-> **The research loop is live.** Join the three-day PhAI Labs technical livestream and watch a scientific agent move from an open question to a testable research plan, then learn from evidence, critique, and revision.
+> **The research loop is live.** PhAI Labs is running a three-day technical livestream that shows a scientific agent discover questions, grow hypotheses, and turn them into testable research plans.
 >
 > [**Enter the live research room →**](https://foundry-arena.rsi-arena.workers.dev/arena)
 
-The livestream makes the system tangible: hypotheses evolve in public, research decisions stay traceable, and the key question is tested head-on — can an agent turn experience from one investigation into better discoveries in the next?
+<a href="https://foundry-arena.rsi-arena.workers.dev/arena"><img src="docs/media/discoveryrsi-live-arena.png" alt="DiscoveryRSI live arena showing hypothesis rankings and the research progress tree" width="100%"></a>
 
-[Open the DiscoveryRSI live arena](https://foundry-arena.rsi-arena.workers.dev/arena) · [Read the technical report](https://github.com/Gen-Verse/DiscoveryRSI#citation) · [Explore the model collection](https://huggingface.co/collections/Gen-Verse/discoveryrsi)
+*The live arena makes the loop inspectable: model comparisons, research domains, candidate hypotheses, compiled experiments, and the growing hypothesis tree update as the run progresses.*
 
-<p align="center">
-  <a href="https://foundry-arena.rsi-arena.workers.dev/arena"><img src="docs/media/live-stream-invite.png" alt="Invitation to the DiscoveryRSI live stream" width="640"></a>
-</p>
+The livestream asks a concrete question: can an agent turn experience from one investigation into better discoveries in the next? It is the fastest way to see DiscoveryRSI move from paper methodology to an operating scientific workflow.
 
-*The DiscoveryRSI technical livestream is now live. Click the invitation to enter the research room.*
+[Open the live arena](https://foundry-arena.rsi-arena.workers.dev/arena) · [Read the technical report](https://github.com/Gen-Verse/DiscoveryRSI#citation) · [Explore the 27B model](https://huggingface.co/Gen-Verse/DiscoveryRSI-27B)
 
-## Why this matters
+## What DiscoveryRSI does
 
-Most AI systems optimize the answer. DiscoveryRSI optimizes the **next question worth asking**. Its benchmark spans complete research paths — not just isolated generations — and asks whether an agent can accumulate evidence, repair weak designs, and produce hypotheses that connect to real scientific directions.
+DiscoveryRSI treats a research hypothesis as a versioned object, not a one-shot answer. Each candidate carries a claim, a proposed test, evidence, alternative explanations, decision criteria, and lineage. A multi-agent research tree can then:
 
-In the reported literature comparison, DiscoveryRSI reached a **6.3% reference-actionability rate**: about **2.5× the GPT group** and **2.7× Claude**. Across two self-improvement rounds, average hypothesis quality rose from **4.86 to 5.39**, while expert reviewers judged **41% of DiscoveryRSI-27B revisions as improvements** and only **12% as regressions**. These are research signals, not claims that AI has replaced scientific validation — the point is to make the path from idea to evidence more productive, inspectable, and repeatable.
+- find questions worth pursuing;
+- turn broad ideas into falsifiable, data-aware study plans;
+- add controls, measurements, and alternative explanations;
+- repair weak designs or combine complementary directions;
+- preserve the evidence and decisions behind every revision; and
+- learn from successful research behavior across investigations.
+
+The result is a traceable path from **question → hypothesis → evidence → experiment → revision**. DFM-Bench evaluates that path as a whole, rather than rewarding a plausible paragraph in isolation.
 
 ## How DiscoveryRSI learns
 
@@ -101,6 +106,31 @@ The broader experiments study four questions:
 2. whether research behavior shifts toward developing and repairing ideas;
 3. whether biomedical researchers judge revisions as useful; and
 4. whether generated hypotheses connect to subsequent expert research.
+
+## Connect the DiscoveryRSI-27B model
+
+The released checkpoint is available as [`Gen-Verse/DiscoveryRSI-27B`](https://huggingface.co/Gen-Verse/DiscoveryRSI-27B). The repository is model-agnostic: serve the checkpoint behind an OpenAI-compatible endpoint, then point the DiscoveryRSI harness at it.
+
+```bash
+# Example: serve the Hugging Face checkpoint with an OpenAI-compatible server
+export MODEL_ID=Gen-Verse/DiscoveryRSI-27B
+vllm serve "$MODEL_ID" --served-model-name discoveryrsi-27b
+```
+
+In a second terminal, configure the endpoint and run a campaign:
+
+```bash
+export DISCOVERY_RSI_BASE_URL=http://localhost:8000/v1
+export DISCOVERY_RSI_MODEL=discoveryrsi-27b
+export DISCOVERY_RSI_API_KEY=local
+
+discovery-rsi campaign \
+  --adapter openai-compatible \
+  --manifest configs/research_manifest.json \
+  --roles plugins/discovery-rsi/roles \
+  --iterations 3 \
+  --replay episodes.jsonl
+```
 
 ## Quick start
 
@@ -155,7 +185,7 @@ This repository contains the agentic system, not a clinical dataset. Bring data 
 
 For GEO-based work, prepare a legally accessible GEO series matrix or differential-expression table, map the relevant genes to Gene Ontology terms, and pass the resulting records to the public GEO adapters. The example JSON files are synthetic smoke tests.
 
-The DiscoveryRSI-27B checkpoint is distributed separately through the [Gen-Verse Hugging Face collection](https://huggingface.co/collections/Gen-Verse/discoveryrsi) when access is enabled. The harness can also run with Codex, Claude Code, any OpenAI-compatible endpoint, or another implementation of the `ModelAdapter` protocol.
+The [DiscoveryRSI-27B checkpoint](https://huggingface.co/Gen-Verse/DiscoveryRSI-27B) is distributed separately through the [Gen-Verse Hugging Face collection](https://huggingface.co/collections/Gen-Verse/discoveryrsi). The harness can also run with Codex, Claude Code, any OpenAI-compatible endpoint, or another implementation of the `ModelAdapter` protocol.
 
 ## Repository layout
 
@@ -172,6 +202,7 @@ tests/                       deterministic CPU checks
 If you use DiscoveryRSI, please cite the technical report and the released model card. The code and model links are maintained here:
 
 - [GitHub repository](https://github.com/Gen-Verse/DiscoveryRSI)
+- [DiscoveryRSI-27B on Hugging Face](https://huggingface.co/Gen-Verse/DiscoveryRSI-27B)
 - [Hugging Face collection](https://huggingface.co/collections/Gen-Verse/discoveryrsi)
 - [PhAI Labs](https://phai-labs.com/)
 - [DiscoveryRSI live stream](https://foundry-arena.rsi-arena.workers.dev/arena)
