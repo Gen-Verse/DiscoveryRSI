@@ -62,11 +62,6 @@ PhAI Labs is running a technical livestream that shows a scientific agent move f
 
 The arena makes the process inspectable: model comparisons, research domains, candidate hypotheses, compiled experiments, and the growing hypothesis tree update as the run progresses.
 
-## 📊 Evidence
-
-In the reported literature comparison, DiscoveryRSI reached a **6.3% reference-actionability rate**, approximately **2.5× the GPT group** and **2.7× Claude**. This retrospective measure asks whether a generated hypothesis can be connected to a concrete research direction in later expert-published work, such as an experimental comparison, a measurement strategy, or a testable evidence gap.
-
-Across two self-improvement rounds, average hypothesis quality rose from **4.86 to 5.39**. In expert review, **41% of DiscoveryRSI-27B revisions improved** and only **12% regressed**. These results are research-process signals and do not replace independent scientific validation.
 
 ## 🚀 Quick Start
 
