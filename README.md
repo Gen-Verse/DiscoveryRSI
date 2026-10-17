@@ -55,6 +55,12 @@ The livestream makes the system tangible: hypotheses evolve in public, research 
 
 [Open the DiscoveryRSI live arena](https://foundry-arena.rsi-arena.workers.dev/arena) · [Read the technical report](https://github.com/Gen-Verse/DiscoveryRSI#citation) · [Explore the model collection](https://huggingface.co/collections/Gen-Verse/discoveryrsi)
 
+<p align="center">
+  <a href="https://foundry-arena.rsi-arena.workers.dev/arena"><img src="docs/media/live-stream-invite.png" alt="Invitation to the DiscoveryRSI live stream" width="640"></a>
+</p>
+
+*The DiscoveryRSI technical livestream is now live. Click the invitation to enter the research room.*
+
 ## Why this matters
 
 Most AI systems optimize the answer. DiscoveryRSI optimizes the **next question worth asking**. Its benchmark spans complete research paths — not just isolated generations — and asks whether an agent can accumulate evidence, repair weak designs, and produce hypotheses that connect to real scientific directions.
