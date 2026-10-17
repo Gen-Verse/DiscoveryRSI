@@ -7,7 +7,7 @@ def test_go_pathway_adapter_is_deterministic_and_filters_short_sets():
     ])
     out = adapter.candidates(episode=2)
     assert len(out) == 1
-    assert out[0].id == "go-pathway-2-1"
+    assert out[0].id == "geo-pathway-2-1"
     assert "GO:0001" in out[0].claim
     assert "null permutation" in out[0].plan
 

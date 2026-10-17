@@ -1,8 +1,8 @@
 """Public, dependency-free Gene Ontology domain adapters.
 
-The adapters turn user-supplied GO pathway and target-annotation records into
+The adapters turn user-supplied GEO dataset and Gene Ontology pathway and target-annotation records into
 structured DiscoveryRSI candidates. They do not bundle a database or fetch
-private campaign data; users may prepare records from the current GO release.
+private campaign data; users may prepare records from the current Gene Ontology release.
 """
 from __future__ import annotations
 
@@ -51,7 +51,7 @@ class GOTargetRecord:
 
 
 class GOPathwayAdapter:
-    """Create pathway-mechanism candidates from a user-supplied GO table."""
+    """Create pathway-mechanism candidates from a user-supplied GEO table."""
 
     def __init__(self, pathways: Sequence[GOPathway], background_genes: Iterable[str] = ()):
         self.pathways = tuple(pathways)
@@ -75,7 +75,7 @@ class GOPathwayAdapter:
             alternatives = ["Gene-set size or annotation density creates the association.",
                             "A neighboring pathway explains the signal."]
             evidence = [f"GO term: {pathway.term_id}", f"Genes: {', '.join(pathway.genes)}", f"Source: {pathway.source}"]
-            candidates.append(Candidate(f"go-pathway-{episode}-{index}", claim, plan, alternatives, evidence))
+            candidates.append(Candidate(f"geo-pathway-{episode}-{index}", claim, plan, alternatives, evidence))
         return candidates
 
 
@@ -107,3 +107,9 @@ class GOTargetPrioritizationAdapter:
             evidence = [f"GO terms: {', '.join(target.term_ids)}", *target.evidence, f"Source: {target.source}"]
             candidates.append(Candidate(f"go-target-{episode}-{index}", claim, plan, alternatives, evidence))
         return candidates
+
+# Public aliases use GEO (Gene Ontology) terminology.
+GEOPathway = GOPathway
+GEOPathwayAdapter = GOPathwayAdapter
+GEOTargetRecord = GOTargetRecord
+GEOTargetPrioritizationAdapter = GOTargetPrioritizationAdapter

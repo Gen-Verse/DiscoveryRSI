@@ -91,18 +91,52 @@ Apache-2.0. See [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTI
 
 Please cite the DiscoveryRSI technical report and model card when using this system or checkpoint.
 
-## GO pathway and therapeutic-prioritization domains
+## GEO pathway and therapeutic-prioritization domains
 
 The release includes two dependency-free domain adapters for users working with Gene Ontology (GO) records:
 
-- **GO disease-pathway analysis** turns a user-supplied table of GO terms and genes into pathway-mechanism candidates. Each candidate includes a matched-background comparison, a held-out or perturbation test, alternative explanations, and a falsification threshold.
-- **GO therapeutic-target prioritization** turns target-to-term annotations into ranking candidates. The plan tests rank stability against matched controls and annotation-source ablations, while separating pathway relevance from tractability and expression effects.
+- **GEO disease-pathway analysis** turns a user-supplied table of GEO terms and genes into pathway-mechanism candidates. Each candidate includes a matched-background comparison, a held-out or perturbation test, alternative explanations, and a falsification threshold.
+- **GEO therapeutic-target prioritization** turns target-to-term annotations into ranking candidates. The plan tests rank stability against matched controls and annotation-source ablations, while separating pathway relevance from tractability and expression effects.
 
-The adapters consume JSON records prepared by the user. They do not bundle GO data, call private services, or encode a particular disease. Prepare records from the GO release and other public sources under their applicable terms, then run:
+The adapters consume JSON records prepared by the user. They do not bundle GEO-derived data, call private services, or encode a particular disease. Prepare records from the GEO release and other public sources under their applicable terms, then run:
 
 ```bash
-discovery-rsi domain-demo --domain go-pathway --input configs/go_pathway_demo.json
-discovery-rsi domain-demo --domain go-target-prioritization --input configs/go_target_prioritization_demo.json
+discovery-rsi domain-demo --domain geo-pathway --input configs/geo_pathway_demo.json
+discovery-rsi domain-demo --domain geo-target-prioritization --input configs/geo_target_prioritization_demo.json
 ```
 
 The example files are small smoke-test inputs. Replace them with your own gene sets, target annotations, background population, and evidence. The resulting candidates can be passed to `DiscoveryLoop` or the provider-backed harness for model critique and replay.
+
+## Harness, roles, tools, and research manifest
+
+The public release includes the runnable harness and its portable orchestration layer:
+
+```text
+src/discovery_rsi/harness.py       propose → critique → select → replay
+src/discovery_rsi/manifest.py      campaign question, domains, roles, and tools
+src/discovery_rsi/tools.py         explicit tool registry with safe local handlers
+src/discovery_rsi/plugin.py        declarative role loading
+plugins/discovery-rsi/roles/       lead, generation, critique, evolution, compiler
+configs/research_manifest.json     example campaign contract
+```
+
+Launch a provider-backed campaign with the manifest and role prompts:
+
+```bash
+discovery-rsi campaign \
+  --adapter openai-compatible \
+  --manifest configs/research_manifest.json \
+  --roles plugins/discovery-rsi/roles \
+  --iterations 3 \
+  --replay episodes.jsonl
+```
+
+The harness only sends the prompt, manifest, role excerpts, and candidate context to the selected adapter. It does not discover or upload files automatically. Add a dataset or evidence source through your own adapter, then record its provenance in the candidate evidence fields. The public release contains no clinical dataset, no patient rows, no HCC or UK Biobank material, and no private campaign traces.
+
+### Accessing data and model artifacts
+
+This repository is the agentic system. To run it, clone the repository, install it locally, and provide your own API key or local model command. For biomedical work, prepare your own legally accessible tables, GEO/GO annotations, literature records, or public APIs and pass only the fields needed by your adapter. Keep source data read-only and keep credentials in environment variables or your provider's local credential store.
+
+The DiscoveryRSI 27B checkpoint is distributed separately through the [Gen-Verse Hugging Face collection](https://huggingface.co/collections/Gen-Verse/discoveryrsi) when access is enabled. A checkpoint is optional: the harness can call any OpenAI-compatible endpoint, Codex, Claude, or another adapter implementing `ModelAdapter`. Follow each dataset and model's license, access approval, and citation requirements before downloading or redistributing it.
+
+For GEO disease-pathway and therapeutic-prioritization runs, use the GEO records prepared by the user (for example, a series matrix or differential-expression table) and map them to public Gene Ontology term annotations before invoking `domain-demo`. The example JSON files are synthetic smoke tests, not a downloadable biological dataset.
