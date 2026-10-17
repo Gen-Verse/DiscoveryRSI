@@ -54,14 +54,11 @@ The system was developed across clinical and population health, therapeutic-targ
 
 PhAI Labs is running a technical livestream that shows a scientific agent move from an open question to a testable research plan, then learn from evidence, critique, and revision.
 
-<a href="https://foundry-arena.rsi-arena.workers.dev/arena"><img src="docs/media/discoveryrsi-live-demo-poster.png" alt="DiscoveryRSI live arena demo" width="100%"></a>
+<p align="center">
+  <a href="https://foundry-arena.rsi-arena.workers.dev/arena"><img src="docs/media/discoveryrsi-live-demo-poster.png" alt="Click to open the DiscoveryRSI live arena" width="100%"></a>
+</p>
 
-<video controls width="100%" poster="docs/media/discoveryrsi-live-demo-poster.png">
-  <source src="docs/media/discoveryrsi-live-demo.mp4" type="video/mp4">
-  Your browser can [download the one-minute demo](docs/media/discoveryrsi-live-demo.mp4).
-</video>
-
-[**Enter the live research room →**](https://foundry-arena.rsi-arena.workers.dev/arena)
+**Click the media above to jump directly to the live website.** The [one-minute no-audio demo video](docs/media/discoveryrsi-live-demo.mp4) is also available to download.
 
 The arena makes the process inspectable: model comparisons, research domains, candidate hypotheses, compiled experiments, and the growing hypothesis tree update as the run progresses.
 
