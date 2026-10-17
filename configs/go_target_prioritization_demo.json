@@ -1,0 +1,7 @@
+{
+  "prioritized_terms": ["GO:0006954"],
+  "targets": [
+    {"target": "GENE1", "term_ids": ["GO:0006954", "GO:0006629"], "evidence": ["user-supplied expression contrast"]},
+    {"target": "GENE5", "term_ids": ["GO:0007165"], "evidence": ["user-supplied perturbation result"]}
+  ]
+}

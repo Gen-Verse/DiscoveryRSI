@@ -90,3 +90,19 @@ Apache-2.0. See [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTI
 ## Citation
 
 Please cite the DiscoveryRSI technical report and model card when using this system or checkpoint.
+
+## GO pathway and therapeutic-prioritization domains
+
+The release includes two dependency-free domain adapters for users working with Gene Ontology (GO) records:
+
+- **GO disease-pathway analysis** turns a user-supplied table of GO terms and genes into pathway-mechanism candidates. Each candidate includes a matched-background comparison, a held-out or perturbation test, alternative explanations, and a falsification threshold.
+- **GO therapeutic-target prioritization** turns target-to-term annotations into ranking candidates. The plan tests rank stability against matched controls and annotation-source ablations, while separating pathway relevance from tractability and expression effects.
+
+The adapters consume JSON records prepared by the user. They do not bundle GO data, call private services, or encode a particular disease. Prepare records from the GO release and other public sources under their applicable terms, then run:
+
+```bash
+discovery-rsi domain-demo --domain go-pathway --input configs/go_pathway_demo.json
+discovery-rsi domain-demo --domain go-target-prioritization --input configs/go_target_prioritization_demo.json
+```
+
+The example files are small smoke-test inputs. Replace them with your own gene sets, target annotations, background population, and evidence. The resulting candidates can be passed to `DiscoveryLoop` or the provider-backed harness for model critique and replay.
