@@ -1,0 +1,5 @@
+{
+  "description": "CPU-only DiscoveryRSI demonstration",
+  "iterations": 2,
+  "model": "adapter supplied by the user"
+}

@@ -1,0 +1,10 @@
+{
+  "name": "discoveryrsi-public-campaign",
+  "question": "Generate and test a falsifiable research hypothesis from the supplied evidence.",
+  "domains": ["clinical_population", "therapeutic_targets", "disease_mechanisms", "population_multiomics", "geo_pathway", "geo_therapeutic_prioritization"],
+  "roles": ["lead", "generation", "critique", "evolution", "compiler"],
+  "tools": ["record_evidence", "compare", "falsify"],
+  "evidence_policy": "user-supplied",
+  "max_candidates": 2,
+  "metadata": {"private_data": false, "dataset_access": "bring-your-own-data"}
+}

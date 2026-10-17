@@ -1,0 +1,7 @@
+{
+  "background_genes": ["GENE1", "GENE2", "GENE3", "GENE4", "GENE5"],
+  "pathways": [
+    {"term_id": "GO:0006954", "name": "inflammatory response", "genes": ["GENE1", "GENE2", "GENE3"]},
+    {"term_id": "GO:0007165", "name": "signal transduction", "genes": ["GENE2", "GENE4"]}
+  ]
+}
