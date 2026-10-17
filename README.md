@@ -48,6 +48,7 @@ The public package includes the agentic core, replay store, provider adapters, c
 ![DiscoveryRSI method](docs/media/discoveryrsi-method.png)
 
 *Figure 2. DiscoveryRSI method overview from the technical report.*
+## Framework
 
 ## Quick Start
 
@@ -166,7 +167,7 @@ discovery-rsi campaign \
 
 The harness only sends the prompt, manifest, role excerpts, and candidate context to the selected adapter. It does not discover or upload files automatically. Add a dataset or evidence source through your own adapter, then record its provenance in the candidate evidence fields. The public release contains no clinical dataset, no patient rows, no HCC or UK Biobank material, and no private campaign traces.
 
-### Accessing data and model artifacts
+## Data and Model Access
 
 This repository is the agentic system. To run it, clone the repository, install it locally, and provide your own API key or local model command. For biomedical work, prepare your own legally accessible tables, GEO/GO annotations, literature records, or public APIs and pass only the fields needed by your adapter. Keep source data read-only and keep credentials in environment variables or your provider's local credential store.
 
