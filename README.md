@@ -1,4 +1,37 @@
-# DiscoveryRSI
+<h1 align="center">DiscoveryRSI</h1>
+
+<p align="center">
+  <strong>Recursive research-hypothesis improvement with agentic roles, tools, and replay</strong>
+</p>
+
+<p align="center">
+  Propose evidence-grounded hypotheses. Critique the design. Select the next experiment. Replay the decision.
+</p>
+
+<p align="center">
+  <a href="https://github.com/Gen-Verse/DiscoveryRSI">
+    <img src="https://img.shields.io/badge/GitHub-DiscoveryRSI-181717?style=for-the-badge&logo=github&logoColor=white" alt="DiscoveryRSI on GitHub">
+  </a>
+  <a href="https://huggingface.co/collections/Gen-Verse/discoveryrsi">
+    <img src="https://img.shields.io/badge/Hugging%20Face-DiscoveryRSI-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" alt="DiscoveryRSI on Hugging Face">
+  </a>
+  <a href="https://arena.ai/leaderboard/agent">
+    <img src="https://img.shields.io/badge/Live%20Agent%20Arena-Evaluate-4C1D95?style=for-the-badge&logo=livechat&logoColor=white" alt="Live Agent Arena">
+  </a>
+  <a href="https://github.com/Gen-Verse/DiscoveryRSI/pulls">
+    <img src="https://img.shields.io/badge/Development-Open%20source-2EA44F?style=for-the-badge&logo=github&logoColor=white" alt="Open-source development">
+  </a>
+</p>
+
+<p align="center">
+  <a href="#overview">Overview</a> ·
+  <a href="#framework">Framework</a> ·
+  <a href="#quick-start">Quick Start</a> ·
+  <a href="#data-and-model-access">Data and Model Access</a> ·
+  <a href="#citation">Citation</a>
+</p>
+
+## Overview
 
 > A runnable agentic system for recursive research-hypothesis improvement.
 
@@ -16,7 +49,7 @@ The public package includes the agentic core, replay store, provider adapters, c
 
 *Figure 2. DiscoveryRSI method overview from the technical report.*
 
-## Install
+## Quick Start
 
 ```bash
 python3 -m venv .venv
