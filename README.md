@@ -58,7 +58,7 @@ PhAI Labs is running a technical livestream that shows a scientific agent move f
   <a href="https://foundry-arena.rsi-arena.workers.dev/arena"><img src="docs/media/discoveryrsi-live-demo.gif" alt="Click to open the DiscoveryRSI live arena" width="100%"></a>
 </p>
 
-**Click the animation to jump directly to the live website.** The one-minute no-audio demo is embedded above as a GIF.
+**Click the animation to jump directly to the live website.** 
 
 The arena makes the process inspectable: model comparisons, research domains, candidate hypotheses, compiled experiments, and the growing hypothesis tree update as the run progresses.
 
