@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "discovery-rsi"
+version = "0.1.0"
+description = "A small, model-agnostic agentic system for recursive research-hypothesis improvement"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[project.scripts]
+discovery-rsi = "discovery_rsi.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/discovery_rsi"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
