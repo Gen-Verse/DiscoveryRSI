@@ -20,7 +20,7 @@ def _domain_demo(kind, path):
 def main():
     p=argparse.ArgumentParser(prog="discovery-rsi");sub=p.add_subparsers(dest="command")
     d=sub.add_parser("demo");d.add_argument("--iterations",type=int,default=2)
-    c=sub.add_parser("campaign");c.add_argument("--adapter",choices=["openai-compatible","codex","claude"],default="openai-compatible");c.add_argument("--iterations",type=int,default=2);c.add_argument("--replay",default="episodes.jsonl");c.add_argument("--manifest",default=None);c.add_argument("--roles",default="plugins/discovery-rsi/roles")
+    c=sub.add_parser("campaign");c.add_argument("--adapter",choices=["openai-compatible","codex","claude","claude-code","cloud-code"],default="openai-compatible");c.add_argument("--iterations",type=int,default=2);c.add_argument("--replay",default="episodes.jsonl");c.add_argument("--manifest",default=None);c.add_argument("--roles",default="plugins/discovery-rsi/roles")
     g=sub.add_parser("domain-demo", help="Generate candidates from a public domain input file");g.add_argument("--domain", choices=["geo-pathway", "geo-target-prioritization"], required=True);g.add_argument("--input", required=True, help="JSON file containing user-supplied GEO records")
     args=p.parse_args()
     if args.command=="demo" or args.command is None:

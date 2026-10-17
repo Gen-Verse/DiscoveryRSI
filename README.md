@@ -140,3 +140,21 @@ This repository is the agentic system. To run it, clone the repository, install 
 The DiscoveryRSI 27B checkpoint is distributed separately through the [Gen-Verse Hugging Face collection](https://huggingface.co/collections/Gen-Verse/discoveryrsi) when access is enabled. A checkpoint is optional: the harness can call any OpenAI-compatible endpoint, Codex, Claude, or another adapter implementing `ModelAdapter`. Follow each dataset and model's license, access approval, and citation requirements before downloading or redistributing it.
 
 For GEO disease-pathway and therapeutic-prioritization runs, use the GEO records prepared by the user (for example, a series matrix or differential-expression table) and map them to public Gene Ontology term annotations before invoking `domain-demo`. The example JSON files are synthetic smoke tests, not a downloadable biological dataset.
+
+### Native Codex and Claude Code adapters
+
+The original implementation uses provider-native command runners. The public harness exposes the same two entry points:
+
+```bash
+# Codex CLI; uses the local Codex login and a read-only sandbox
+export DISCOVERY_RSI_CODEX_MODEL=gpt-6.1-sol
+discovery-rsi campaign --adapter codex --manifest configs/research_manifest.json
+
+# Claude Code; uses the native stream interface and public plugin roles
+export ANTHROPIC_AUTH_TOKEN=your-token
+export DISCOVERY_RSI_CLAUDE_MODEL=claude-sonnet
+export DISCOVERY_RSI_PLUGIN_DIR=plugins/discovery-rsi
+discovery-rsi campaign --adapter claude-code --manifest configs/research_manifest.json --roles plugins/discovery-rsi/roles
+```
+
+The Claude Code runner preserves the native stream JSON protocol, restricted permission mode, no-session persistence, model selection, plugin directory, and role selection. The Codex runner uses `codex exec --json --ephemeral` with a read-only sandbox. Authentication remains local to each CLI; no credential is written to the repository.
