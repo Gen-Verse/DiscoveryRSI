@@ -1,11 +1,11 @@
 <h1 align="center">DiscoveryRSI</h1>
 
 <p align="center">
-  <strong>Recursively learning to discover valuable hypotheses</strong>
+  <strong>From research questions to agents that learn how to discover</strong>
 </p>
 
 <p align="center">
-  A research agent that turns evidence, criticism, and revision into a persistent scientific learning process.
+  DiscoveryRSI turns evidence, criticism, and revision into a compounding scientific learning loop.
 </p>
 
 <p align="center">
@@ -17,6 +17,7 @@
 
 <p align="center">
   <a href="#overview">Overview</a> ·
+  <a href="#watch-discoveryrsi-live">Watch live</a> ·
   <a href="#how-discoveryrsi-learns">How it learns</a> ·
   <a href="#evidence">Evidence</a> ·
   <a href="#quick-start">Quick start</a> ·
@@ -44,6 +45,22 @@ A hypothesis is not treated as a finished answer. It is a versioned research obj
 
 *Figure 2. DiscoveryRSI method: hypothesis trees, contribution attribution, and recursive improvement.*
 
+## Watch DiscoveryRSI live
+
+> **The research loop is live.** Join the three-day PhAI Labs technical livestream and watch a scientific agent move from an open question to a testable research plan, then learn from evidence, critique, and revision.
+>
+> [**Enter the live research room →**](https://foundry-arena.rsi-arena.workers.dev/arena)
+
+The livestream makes the system tangible: hypotheses evolve in public, research decisions stay traceable, and the key question is tested head-on — can an agent turn experience from one investigation into better discoveries in the next?
+
+[Open the DiscoveryRSI live arena](https://foundry-arena.rsi-arena.workers.dev/arena) · [Read the technical report](https://github.com/Gen-Verse/DiscoveryRSI#citation) · [Explore the model collection](https://huggingface.co/collections/Gen-Verse/discoveryrsi)
+
+## Why this matters
+
+Most AI systems optimize the answer. DiscoveryRSI optimizes the **next question worth asking**. Its benchmark spans complete research paths — not just isolated generations — and asks whether an agent can accumulate evidence, repair weak designs, and produce hypotheses that connect to real scientific directions.
+
+In the reported literature comparison, DiscoveryRSI reached a **6.3% reference-actionability rate**: about **2.5× the GPT group** and **2.7× Claude**. Across two self-improvement rounds, average hypothesis quality rose from **4.86 to 5.39**, while expert reviewers judged **41% of DiscoveryRSI-27B revisions as improvements** and only **12% as regressions**. These are research signals, not claims that AI has replaced scientific validation — the point is to make the path from idea to evidence more productive, inspectable, and repeatable.
+
 ## How DiscoveryRSI learns
 
 DiscoveryRSI makes the research process itself the source of learning.
@@ -70,7 +87,7 @@ The public package also includes adapters for **GEO-derived gene sets with Gene 
 
 The technical report evaluates whether generated hypotheses can connect to useful future research. A shared literature reference set is searched using forward and backward citation expansion, with each model group evaluated using its own knowledge cutoff.
 
-In the reported comparison, DiscoveryRSI reached a **6.3% reference-actionability rate**, approximately **2.5× the GPT group** and **2.7× Claude**. This measure asks whether a generated hypothesis can be linked to a concrete research direction in later expert-published work, such as an experimental comparison, a measurement strategy, or a testable evidence gap. It is a retrospective inspiration signal, not proof that a model’s hypothesis was adopted or validated.
+In the reported comparison, DiscoveryRSI reached a **6.3% reference-actionability rate**, approximately **2.5× the GPT group** and **2.7× Claude**. The measure asks whether a generated hypothesis can be linked to a concrete research direction in later expert-published work, such as an experimental comparison, a measurement strategy, or a testable evidence gap. It is a retrospective inspiration signal, not proof that a model’s hypothesis was adopted or validated.
 
 The broader experiments study four questions:
 
