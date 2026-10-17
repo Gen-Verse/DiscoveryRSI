@@ -1,83 +1,87 @@
 # DiscoveryRSI
 
-> Recursive research-agent orchestration for developing, comparing, and retaining scientific hypotheses.
+> A runnable agentic system for recursive research-hypothesis improvement.
 
-DiscoveryRSI is a model-agnostic agentic system for recursive research. It represents a research hypothesis as a versioned claim, investigation plan, evidence record, alternatives, and lineage. A bounded episode then follows:
+DiscoveryRSI represents research hypotheses as versioned claims, investigation plans, evidence, alternatives, scores, and lineage. Its harness runs a bounded recursive loop:
 
 **Propose → Critique → Select → Retain → Replay**
 
-The public package contains the agentic orchestration core and a deterministic local demo. Model clients, dataset adapters, evaluators, and domain tools are injected through small Python callables so the system can run with a local model, an OpenAI-compatible endpoint, or another provider.
+The public package includes the agentic core, replay store, provider adapters, campaign harness, CPU demo, and tests. Private EHR runtime code, internal campaign records, credentials, infrastructure paths, and laboratory deployment files are excluded.
 
 ![DiscoveryRSI result highlight](docs/media/discoveryrsi-result-highlight.png)
 
-*Figure 1. Result highlight from the technical report: recursive research improves hypothesis quality, research behavior, and revision progress. Values and evaluation boundaries are defined by the report.*
-
-## Method
+*Figure 1. Result highlight from the technical report.*
 
 ![DiscoveryRSI method](docs/media/discoveryrsi-method.png)
 
-*Figure 2. DiscoveryRSI couples multi-agent hypothesis development with evidence, planned investigations, recursive model/harness updates, and rediscovery.*
+*Figure 2. DiscoveryRSI method overview from the technical report.*
 
-The core abstractions are:
-
-- `Candidate`: a versioned hypothesis, plan, alternatives, evidence, parents, score, and critique.
-- `DiscoveryLoop`: bounded propose/critique/select/retain orchestration.
-- `Episode`: an immutable record of one bounded research interaction.
-- `ReplayBuffer`: append-only JSONL replay for local reproducibility.
-
-## Quick start
+## Install
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install -e ".[test]"
-discovery-rsi --iterations 2
+python -m pip install -e .
+python -m pip install pytest
+```
+
+## Run the CPU demo
+
+```bash
+discovery-rsi demo --iterations 2
 pytest
 ```
 
-The demo is CPU-only and uses deterministic local adapters. It does not download a model, access private data, or require a provider key.
+The demo uses deterministic local adapters and requires no model, dataset, GPU, or API key.
 
-## Use a real model
+## Launch a discovery campaign with an API key
 
-Provide a proposer and critic adapter to `DiscoveryLoop`:
+DiscoveryRSI supports any OpenAI-compatible endpoint. Set the endpoint, model, and key in the environment; keys are never stored in configs or source files.
 
-```python
-from discovery_rsi import Candidate, DiscoveryLoop, ReplayBuffer
-
-loop = DiscoveryLoop(
-    proposer=my_proposer,
-    critic=my_critic,
-    iterations=3,
-    replay=ReplayBuffer("episodes.jsonl"),
-)
-episodes = loop.run()
+```bash
+export DISCOVERY_RSI_BASE_URL=https://api.openai.com/v1
+export DISCOVERY_RSI_MODEL=gpt-4o-mini
+export DISCOVERY_RSI_API_KEY=your-key
+discovery-rsi campaign --adapter openai-compatible --iterations 3 --replay episodes.jsonl
 ```
 
-Adapters should keep model credentials outside source files, return structured candidates, and preserve the evidence and alternatives used for each decision. The public core does not assume a particular API, model family, tokenizer, or serving stack.
+The endpoint must provide `/chat/completions`. Each episode records generated candidates, critique scores, selection, lineage, and replay output. The harness does not send local files or private data unless an adapter explicitly includes them in its prompt.
 
-## EHR and scientific data boundaries
+## Codex and Claude adapters
 
-The public system is data-adapter based. Users may provide adapters for public or authorized datasets such as MIMIC-IV and eICU, subject to their own access terms and data-use agreements. Dataset files are never bundled in this repository.
+If the Codex or Claude command is installed locally, the same harness can call it through a command adapter:
 
-HCC and UK Biobank adapters, paths, data, and internal source packages are intentionally excluded from this public release. Private patient data, credentials, campaign traces, internal seed catalogs, and laboratory infrastructure are not part of the package.
+```bash
+export DISCOVERY_RSI_CODEX=codex
+discovery-rsi campaign --adapter codex --iterations 2
+
+export DISCOVERY_RSI_CLAUDE=claude
+discovery-rsi campaign --adapter claude --iterations 2
+```
+
+The public adapter passes a prompt and captures stdout. Authentication, model selection, sandboxing, and tool permissions remain controlled by the local CLI.
+
+## Adapt the harness
+
+Implement the `ModelAdapter` protocol when integrating another provider, or replace the proposer/critic functions for a domain-specific workflow. The `ToolRegistry` and dataset adapter layers should remain outside the core package and receive only the data the user explicitly authorizes.
+
+## EHR boundaries
+
+MIMIC-IV and eICU can be connected through user-supplied adapters subject to their access terms. HCC and UK Biobank code, paths, data, and private source packages are excluded from this release. No dataset is bundled.
 
 ## DiscoveryRSI 27B
 
-The DiscoveryRSI 27B RAFT model is released separately from this agentic core. The public model collection is maintained at [Gen-Verse/DiscoveryRSI](https://huggingface.co/collections/Gen-Verse/discoveryrsi). Use the model card for checkpoint identity, license, inference requirements, and evaluation limitations.
+The DiscoveryRSI 27B RAFT model is released separately from this agentic system. See the [Gen-Verse DiscoveryRSI collection](https://huggingface.co/collections/Gen-Verse/discoveryrsi) for model artifacts when available.
 
-## Repository layout
+## Layout
 
 ```text
-src/discovery_rsi/   public orchestration core
-configs/             local demo configuration
-examples/            adapter examples and extensions
+src/discovery_rsi/   core loop, replay, harness and provider adapters
+configs/             portable configuration examples
+examples/            extension guidance
+docs/media/          technical-report figures
 tests/               CPU tests
-docs/                release and reproducibility notes
 ```
-
-## Scope and reproducibility
-
-This repository provides the portable agentic contracts and local replay mechanism. The technical report describes the full research protocol, including hypothesis credit assignment, harness replay, recursive deployment, and evaluation boundaries. Reproducing a particular scientific result additionally requires the stated dataset access, model checkpoint, domain adapter, and evaluation protocol.
 
 ## License
 
@@ -85,4 +89,4 @@ Apache-2.0. See [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTI
 
 ## Citation
 
-Please cite the DiscoveryRSI technical report and the model card when using the system or checkpoint.
+Please cite the DiscoveryRSI technical report and model card when using this system or checkpoint.

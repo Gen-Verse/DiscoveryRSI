@@ -1,0 +1,8 @@
+{
+  "adapter": "openai-compatible",
+  "base_url_env": "DISCOVERY_RSI_BASE_URL",
+  "model_env": "DISCOVERY_RSI_MODEL",
+  "api_key_env": "DISCOVERY_RSI_API_KEY",
+  "iterations": 2,
+  "replay": "episodes.jsonl"
+}
