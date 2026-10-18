@@ -12,7 +12,7 @@
 
 </div>
 
-## 🔬 DiscoveryRSI-27B discovers more hypothesis hits in subsequent published research
+## 🔬 DiscoveryRSI-27B: an open 27B model that proposes research hypotheses
 
 ![Hypothesis hits in subsequent published research: DiscoveryRSI-27B 6.3%, DeepSeek 5.4%, GLM 2.8%, GPT 2.5%, and Claude 2.3%](docs/media/discoveryrsi-hypothesis-hits.svg)
 
