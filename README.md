@@ -14,7 +14,7 @@
 
 ## 🔬 DiscoveryRSI-27B discovers more hypothesis hits in subsequent published research
 
-![Hypothesis hits in subsequent published research: DiscoveryRSI-27B 6.3%, DeepSeek 5.4%, GLM 2.8%, GPT 2.5%, and Claude 2.3%](docs/media/discoveryrsi-hypothesis-hits.png)
+![Hypothesis hits in subsequent published research: DiscoveryRSI-27B 6.3%, DeepSeek 5.4%, GLM 2.8%, GPT 2.5%, and Claude 2.3%](docs/media/discoveryrsi-hypothesis-hits.svg)
 
 In this comparison, **DiscoveryRSI-27B achieves the highest actionable-reference rate at 6.3%**, followed by DeepSeek (**5.4%**), GLM (**2.8%**), GPT (**2.5%**), and Claude (**2.3%**).
 
