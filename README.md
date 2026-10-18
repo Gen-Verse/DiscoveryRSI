@@ -48,8 +48,7 @@ It supports research workflows that:
 - replay tool failures, repeated rediscovery, and lost context; and
 - evaluate complete research paths instead of isolated text generations.
 
-The system was developed across clinical and population health, therapeutic-target prioritization, disease mechanisms, and population multi-omics. GEO pathway and therapeutic-target adapters are included for user-provided records.
-
+The system was developed across **clinical and population health, therapeutic-target prioritization, disease mechanisms, and population multi-omics**. 
 ## 📺 Watch the live research loop
 
 PhAI Labs is running a technical livestream that shows a scientific agent move from an open question to a testable research plan, then learn from evidence, critique, and revision.
