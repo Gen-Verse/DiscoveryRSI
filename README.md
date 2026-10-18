@@ -30,7 +30,7 @@
 | --- | --- | --- |
 | 🤖 Model | **DiscoveryRSI-27B** | [🤗 Hugging Face](https://huggingface.co/Gen-Verse/DiscoveryRSI-27B) |
 | 🧰 Code | **DiscoveryRSI harness** | [Browse source](src/discovery_rsi/) |
-| 📚 Collection | **DiscoveryRSI models** | [🤗 Hugging Face](https://huggingface.co/collections/Gen-Verse/discoveryrsi) |
+| 📊 Dataset | **Compiled hypothesis task examples** | [🤗 Hugging Face](https://huggingface.co/datasets/Gen-Verse/DiscoveryRSI-Hypothesis-Task-Examples) |
 | 📺 Demo | **DiscoveryRSI live arena** | [Open arena](https://foundry-arena.rsi-arena.workers.dev/arena) |
 
 ## 🧠 What DiscoveryRSI does
