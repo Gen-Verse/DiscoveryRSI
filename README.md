@@ -21,7 +21,7 @@ In this comparison, **[DiscoveryRSI-27B](https://huggingface.co/Gen-Verse/Discov
 
 ## 📺 Watch the live research loop
 
-[PhAI Labs](https://phai-labs.com/) is running a technical livestream that shows a scientific agent move from an open question to a testable research plan, then learn from evidence, critique, and revision.
+[PhAI Labs](https://phai-labs.com/) is running a [technical livestream](https://foundry-arena.rsi-arena.workers.dev/arena) that shows a scientific agent move from an open question to a testable research plan, then learn from evidence, critique, and revision.
 
 <p align="center">
   <a href="https://foundry-arena.rsi-arena.workers.dev/arena"><img src="docs/media/discoveryrsi-live-demo.gif" alt="Click to open the DiscoveryRSI live arena" width="100%"></a>
