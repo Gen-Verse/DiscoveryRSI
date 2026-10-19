@@ -37,7 +37,7 @@ The arena makes the process inspectable: model comparisons, research domains, ca
 
 **2. A 27B model trained from research experience.** **DiscoveryRSI-27B** learns through Hypothesis Credit Optimization, which links assessments of scientific quality to documented contributions such as finding evidence, adding a comparator, clarifying a measurement, or repairing a falsification rule. In matched runs, DiscoveryRSI-27B selected **16.7% more unique hypotheses** and successfully compiled **50% more Harbor tasks** than its base model.
 
-**3. DFM-Bench, a benchmark for cumulative research progress.** **DFM-Bench** evaluates how research develops across a run. It scores individual hypotheses, revisions against their actual predecessors, ordered development paths, complete research runs, and deduplicated scientific contributions. This separates a good proposal from a productive research process, and an executable package from a scientifically validated result.
+**3. DFM-Bench, a benchmark for cumulative research progress.** **[DFM-Bench](https://github.com/Gen-Verse/DFM-Bench)** evaluates how research develops across a run in life science, with a battery-science extension. It scores individual hypotheses, revisions against their actual predecessors, ordered development paths, complete research runs, and deduplicated scientific contributions. This separates a good proposal from a productive research process, and an executable package from a scientifically validated result.
 
 ![DiscoveryRSI system overview](docs/media/discoveryrsi-method.png)
 
@@ -115,7 +115,7 @@ The system was developed across **clinical and population health, therapeutic-ta
 
 ## 🧪 Research Domains
 
-The public package includes workflows and adapters for:
+DiscoveryRSI focuses on **life-science research**, with public workflows and adapters for:
 
 - clinical and population health;
 - therapeutic-target prioritization;
@@ -124,6 +124,14 @@ The public package includes workflows and adapters for:
 - GEO-derived pathway and target records.
 
 Bring only data you are authorized to use. No patient rows, HCC material, UK Biobank material, private campaign traces, credentials, or laboratory infrastructure are bundled.
+
+## 📊 DFM-Bench: Life Science and Battery Extension
+
+[**DFM-Bench**](https://github.com/Gen-Verse/DFM-Bench) evaluates cumulative research progress at five levels: **Hypothesis, Transition, Trajectory, Campaign, and Discovery**. Its primary setting is life science, spanning clinical and population health, therapeutic-target prioritization, disease mechanisms, and population multi-omics.
+
+A **battery-science extension** applies the same evaluation structure with domain-specific rubrics for electrochemistry, materials degradation, sensing, and state estimation. Completion, compilation, and readiness are reported separately from scientific quality; proposed contributions remain subject to independent verification.
+
+See the [benchmark repository](https://github.com/Gen-Verse/DFM-Bench) for the overview and the [evaluation guide](https://github.com/Gen-Verse/DFM-Bench/blob/main/docs/EVALUATION.md) for practical setup and usage.
 
 ## ⚠️ Limitations and Responsible Use
 
