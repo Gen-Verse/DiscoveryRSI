@@ -5,6 +5,7 @@
 <p><strong>Recursively learning to discover valuable hypotheses</strong></p>
 
 <p>
+  <a href="https://arxiv.org/abs/2610.23839"><img src="https://img.shields.io/badge/arXiv-2610.23839-B31B1B?logo=arxiv&logoColor=white" alt="DiscoveryRSI on arXiv"/></a>
   <a href="https://huggingface.co/Gen-Verse/DiscoveryRSI-27B"><img src="https://img.shields.io/badge/DiscoveryRSI--27B-Hugging%20Face-FFCC00?logo=huggingface&logoColor=black" alt="DiscoveryRSI-27B on Hugging Face"/></a>
   <a href="https://huggingface.co/collections/Gen-Verse/discoveryrsi"><img src="https://img.shields.io/badge/DiscoveryRSI-Collection-FFD21E?logo=huggingface&logoColor=black" alt="DiscoveryRSI collection"/></a>
   <a href="https://foundry-arena.rsi-arena.workers.dev/arena"><img src="https://img.shields.io/badge/Live%20Arena-Watch%20DiscoveryRSI-4C1D95" alt="DiscoveryRSI live arena"/></a>
@@ -46,6 +47,7 @@ The arena makes the process inspectable: model comparisons, research domains, ca
 
 | **Type** | **Name** | **Link** |
 | --- | --- | --- |
+| 📄 Paper | **DiscoveryRSI** | [arXiv:2610.23839](https://arxiv.org/abs/2610.23839) |
 | 🤖 Model | **DiscoveryRSI-27B** | [🤗 Hugging Face](https://huggingface.co/Gen-Verse/DiscoveryRSI-27B) |
 | 📊 Dataset | **Compiled hypothesis task examples** | [🤗 Hugging Face](https://huggingface.co/datasets/Gen-Verse/DiscoveryRSI-Hypothesis-Task-Examples) |
 | 📺 Demo | **DiscoveryRSI live arena** | [Open arena](https://foundry-arena.rsi-arena.workers.dev/arena) |
@@ -128,13 +130,14 @@ DiscoveryRSI can produce plausible but unsupported claims, omit relevant evidenc
 
 ## 📝 Citation
 
-If you use DiscoveryRSI or DiscoveryRSI-27B, cite the software:
+If you use DiscoveryRSI or DiscoveryRSI-27B in your research, please cite our paper:
 
 ```bibtex
-@software{discoveryrsi,
-  title = {DiscoveryRSI},
-  url = {https://github.com/Gen-Verse/DiscoveryRSI},
-  note = {Recursive scientific hypothesis discovery and DiscoveryRSI-27B}
+@article{zhong2026discoveryrsi,
+  title={DiscoveryRSI: Recursively Learning to Discover Valuable Hypotheses},
+  author={Zhong, Jianyuan and Wu, Chenwei and Yu, Zhaochen and Jiang, Xixian and Li, Xuewei and Xiao, Hao and Dai, Xilin and Wang, Junyang and Zou, Jiaru and Cui, Zhiqing and Zheng, Boyuan and Xiong, Jing and Zhang, Zhen and Gao, Qiang and Morley, Michael and Nakayama, Luis and Xu, Qiang and Shen, Liyue and Gui, Tao and Celi, Leo Anthony and Zou, James and Yin, Zhenfei and Wu, Yingcheng and Yang, Ling},
+  journal={arXiv preprint arXiv:2610.23839},
+  year={2026}
 }
 ```
 
