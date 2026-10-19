@@ -50,6 +50,7 @@ The arena makes the process inspectable: model comparisons, research domains, ca
 | 📄 Paper | **DiscoveryRSI** | [arXiv:2610.23839](https://arxiv.org/abs/2610.23839) |
 | 🤖 Model | **DiscoveryRSI-27B** | [🤗 Hugging Face](https://huggingface.co/Gen-Verse/DiscoveryRSI-27B) |
 | 📊 Dataset | **Compiled hypothesis task examples** | [🤗 Hugging Face](https://huggingface.co/datasets/Gen-Verse/DiscoveryRSI-Hypothesis-Task-Examples) |
+| 🧪 Benchmark | **DFM-Bench** | [GitHub](https://github.com/Gen-Verse/DFM-Bench) |
 | 📺 Demo | **DiscoveryRSI live arena** | [Open arena](https://foundry-arena.rsi-arena.workers.dev/arena) |
 
 ## 🚀 Quick Start
