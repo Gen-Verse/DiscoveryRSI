@@ -1,4 +1,5 @@
 from __future__ import annotations
+from copy import deepcopy
 from dataclasses import asdict, dataclass, field
 import json
 from pathlib import Path
@@ -52,7 +53,10 @@ class DiscoveryLoop:
     def run(self) -> list[Episode]:
         episodes=[]
         for number in range(1, self.iterations + 1):
-            candidates=list(self.proposer(number, tuple(self.history)))
+            # Keep episode records stable even if a proposer reuses or returns
+            # a history-owned Candidate: critic annotations must not mutate
+            # earlier episodes, replay snapshots, or proposer-owned objects.
+            candidates=[deepcopy(c) for c in self.proposer(number, tuple(self.history))]
             if not candidates:
                 episodes.append(Episode(number, [], None, "no_candidates")); continue
             for candidate in candidates:
